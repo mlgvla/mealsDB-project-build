@@ -6,5 +6,8 @@ function getRecipesByCuisine(e) {
 }
 
 function getRecipesByCategory(e) {
-    console.log(e)
+    const category = e.target.value
+    fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`)
+    .then(r => r.json())
+    .then(categories => console.log(categories))
 }
