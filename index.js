@@ -28,7 +28,7 @@ function getRecipesByCategory(e) {
 
 function displayRecipes(recipes) {
    recipeContainer.replaceChildren()
-   console.log(recipes)
+
    selectionH1.textContent = cuisineSelect.value || categorySelect.value
 
    recipes.meals.forEach(recipe => renderRecipeCard(recipe))
@@ -42,15 +42,23 @@ function renderRecipeCard(recipe) {
 
    const recipeId = idMeal
 
+   const cardDiv = document.createElement("div")
+   cardDiv.classList.add("card")
+
    const recipeImg = document.createElement("img")
    recipeImg.src = strMealThumb
    recipeImg.alt = strMeal
    recipeImg.addEventListener("click", e => getRecipeDetails(e, recipeId))
 
+   const recipeTitleDiv = document.createElement("div")
+   recipeTitleDiv.classList.add("recipe-title")
    const recipeTitle = document.createElement("p")
    recipeTitle.textContent = strMeal
 
-   recipeContainer.append(recipeImg, recipeTitle)
+   recipeTitleDiv.append(recipeTitle)
+
+   cardDiv.append(recipeImg, recipeTitleDiv)
+   recipeContainer.append(cardDiv)
 }
 
 function getRecipeDetails(e, id) {
