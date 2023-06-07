@@ -38,16 +38,17 @@ function displayRecipes(recipes) {
 }
 
 function renderRecipeCard(recipe) {
-    //destructure properties
-   const recipeId = recipe.idMeal
+   const { idMeal, strMealThumb, strMeal } = recipe
+
+   const recipeId = idMeal
 
    const recipeImg = document.createElement("img")
-   recipeImg.src = recipe.strMealThumb
-   recipeImg.alt = recipe.strMeal
+   recipeImg.src = strMealThumb
+   recipeImg.alt = strMeal
    recipeImg.addEventListener("click", e => getRecipeDetails(e, recipeId))
 
    const recipeTitle = document.createElement("p")
-   recipeTitle.textContent = recipe.strMeal
+   recipeTitle.textContent = strMeal
 
    recipeContainer.append(recipeImg, recipeTitle)
 }
@@ -59,8 +60,15 @@ function getRecipeDetails(e, id) {
 }
 
 function renderRecipeDetails(recipe) {
-    //destructure properties
-   console.log(recipe)
+   const {
+      strMeal,
+      strArea,
+      strCategory,
+      strMealThumb,
+      strInstructions,
+      strYoutube,
+   } = recipe
+
    let nameH1 = document.createElement("h1")
    let cuisineP = document.createElement("p")
    let categoryP = document.createElement("p")
@@ -69,15 +77,14 @@ function renderRecipeDetails(recipe) {
    let instructionsP = document.createElement("p")
    let youTubeLink = document.createElement("a")
 
-   nameH1.textContent = recipe.strMeal
-   cuisineP.textContent = recipe.strArea
-   categoryP.textContent = recipe.strCategory
-   recipeImg.src = recipe.strMealThumb
+   nameH1.textContent = strMeal
+   cuisineP.textContent = strArea
+   categoryP.textContent = strCategory
+   recipeImg.src = strMealThumb
    ingredientsP.textContent = "To be replaced with parsed ingredients"
-   instructionsP = recipe.strInstructions
-   youTubeLink.href = recipe.strYoutube
-   youTubeLink.textContent = `${recipe.strMeal} on YouTube`
-
+   instructionsP = strInstructions
+   youTubeLink.href = strYoutube
+   youTubeLink.textContent = `${strMeal} on YouTube`
 
    selectionH1.textContent = ""
    recipeContainer.replaceChildren()
