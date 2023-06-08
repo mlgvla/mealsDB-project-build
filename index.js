@@ -52,7 +52,7 @@ function renderRecipeCard(recipe) {
 
    const recipeTitleDiv = document.createElement("div")
    recipeTitleDiv.classList.add("recipe-title")
-   const recipeTitle = document.createElement("p")
+   const recipeTitle = document.createElement("h3")
    recipeTitle.textContent = strMeal
 
    recipeTitleDiv.append(recipeTitle)

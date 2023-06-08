@@ -4,12 +4,19 @@ body {
    background-color: antiquewhite;
 }
 
+.recipe-container {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+   grid-gap: 2rem;
+   justify-content: center;
+   margin: 30px;
+}
+
 .card {
    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
    transition: 0.3s;
-   width: 40%;
    border-radius: 5px;
-   margin: 20px;
+   /* margin: 20px; */
 }
 
 .card:hover {
@@ -24,3 +31,43 @@ body {
 .recipe-title {
    padding: 2px 16px;
 }
+
+/* Recipe Details Styles */
+.recipe-details-container {
+   
+   max-width: 940px;
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
+   grid-auto-rows: minmax(100px, auto);
+   grid-gap: 10px;
+   grid-template-areas: 
+   "title title title title"
+   "image image image ingredients"
+   "image image image ingredients"
+   "instructions instructions instructions ingredients"
+   "instructions instructions instructions ingredients"
+   "resources resources resources resources";
+}
+
+.recipe-details-container > * {
+   background-color: cornflowerblue;
+   padding: 30px;
+}
+
+.detail-title {
+   grid-area: title;
+}
+
+.detail-image {
+   grid-area: image;
+}
+
+.detail-instructions {
+   grid-area: instructions
+}
+
+.detail-resources {
+   grid-area: resources;
+}
+
+
