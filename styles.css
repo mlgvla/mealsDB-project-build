@@ -1,14 +1,4 @@
-html {
-   font-family: Arial, Helvetica, sans-serif;
-}
 
-/* *,
-*::before,
-*::after {
-   box-sizing: border-box;
-   margin: 0;
-   padding: 0;
-} */
 
 body {
    background-color: antiquewhite;
@@ -26,7 +16,7 @@ body {
    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
-img {
+.card img {
    border-radius: 5px 5px 0 0;
    width: 100%;
 }
