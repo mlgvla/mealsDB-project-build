@@ -1,5 +1,3 @@
-
-
 body {
    background-color: antiquewhite;
 }
@@ -34,23 +32,30 @@ body {
 
 /* Recipe Details Styles */
 .recipe-details-container {
+   max-width: 60%;
+   margin: 50px auto;
    
-   max-width: 940px;
+   background-color: grey;
+   border-radius: 30px;
+   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+   /* max-width: 940px; */
    display: grid;
    grid-template-columns: repeat(4, 1fr);
    grid-auto-rows: minmax(100px, auto);
    grid-gap: 10px;
-   grid-template-areas: 
-   "title title title title"
-   "image image image ingredients"
-   "image image image ingredients"
-   "instructions instructions instructions ingredients"
-   "instructions instructions instructions ingredients"
-   "resources resources resources resources";
+   grid-template-areas:
+      "title title title title"
+      "image image ingredients ingredients"
+      "image image ingredients ingredients"
+      "instructions instructions instructions instructions"
+      "instructions instructions instructions instructions"
+      "resources resources resources resources";
 }
 
 .recipe-details-container > * {
    background-color: cornflowerblue;
+   border-radius: 30px;
    padding: 30px;
 }
 
@@ -62,12 +67,18 @@ body {
    grid-area: image;
 }
 
+#detail-image {
+   width: 100%;
+}
+
+.detail-ingredients {
+   grid-area: ingredients;
+}
+
 .detail-instructions {
-   grid-area: instructions
+   grid-area: instructions;
 }
 
 .detail-resources {
    grid-area: resources;
 }
-
-

@@ -32,3 +32,19 @@ function renderCategoryOptions(categories) {
    })
 }
 
+function parseIngredients(recipe) {
+   const ingredientArray = []
+
+   for (let i = 1; i < 21; i++) {
+      let measure = recipe["strMeasure" + i.toString()]
+      let ingredient = recipe["strIngredient" + i.toString()]
+      if (ingredient === "" || ingredient === null) {
+         ingredient = "" // replaces null value with a string for trim() method
+         continue //don't include empty ingredient strings of null values
+      }
+      let ingredientString = measure.trim() + " " + ingredient.trim() // get rid of extra trailing spaces
+      ingredientArray.push(ingredientString)
+   }
+   return ingredientArray
+}
+

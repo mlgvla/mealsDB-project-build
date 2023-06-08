@@ -68,6 +68,7 @@ function getRecipeDetails(e, id) {
 }
 
 function renderRecipeDetails(recipe) {
+   recipeContainer.replaceChildren()
    const {
       strMeal,
       strArea,
@@ -77,32 +78,51 @@ function renderRecipeDetails(recipe) {
       strYoutube,
    } = recipe
 
-   let nameH1 = document.createElement("h1")
-   let cuisineP = document.createElement("p")
-   let categoryP = document.createElement("p")
-   let recipeImg = document.createElement("img")
-   let ingredientsP = document.createElement("p") // will need to parse these
-   let instructionsP = document.createElement("p")
-   let youTubeLink = document.createElement("a")
+   // Ingredients Area
+   let ingredients = parseIngredients(recipe)
+   let ingredientPs = ingredients.map(ingredient => {
+      let ingredientP = document.createElement("p")
+      ingredientP.textContent = ingredient
+      return ingredientP
+   })
+   let ingredientsArea =  document.querySelector(".detail-ingredients")
+   ingredientsArea.replaceChildren()
+   ingredientsArea.append(...ingredientPs)
 
-   nameH1.textContent = strMeal
-   cuisineP.textContent = strArea
-   categoryP.textContent = strCategory
-   recipeImg.src = strMealThumb
-   ingredientsP.textContent = "To be replaced with parsed ingredients"
-   instructionsP = strInstructions
-   youTubeLink.href = strYoutube
-   youTubeLink.textContent = `${strMeal} on YouTube`
+   // Title Area
+   document.querySelector(".detail-title").textContent = strMeal
+   
+   // Image Area
+   document.querySelector("#detail-image").src = strMealThumb
+   document.querySelector(".detail-instructions").textContent = strInstructions
+   
 
-   selectionH1.textContent = ""
-   recipeContainer.replaceChildren()
-   recipeContainer.append(
-      recipeImg,
-      nameH1,
-      cuisineP,
-      categoryP,
-      ingredientsP,
-      instructionsP,
-      youTubeLink
-   )
+   // let nameH1 = document.createElement("h1")
+   // let cuisineP = document.createElement("p")
+   // let categoryP = document.createElement("p")
+   // let recipeImg = document.createElement("img")
+   // let ingredientsP = document.createElement("p") // will need to parse these
+   // let instructionsP = document.createElement("p")
+   // let youTubeLink = document.createElement("a")
+
+   // nameH1.textContent = strMeal
+   // cuisineP.textContent = strArea
+   // categoryP.textContent = strCategory
+   // recipeImg.src = strMealThumb
+   // ingredientsP.textContent = "To be replaced with parsed ingredients"
+   // instructionsP = strInstructions
+   // youTubeLink.href = strYoutube
+   // youTubeLink.textContent = `${strMeal} on YouTube`
+
+   // selectionH1.textContent = ""
+   // recipeContainer.replaceChildren()
+   // recipeContainer.append(
+   //    recipeImg,
+   //    nameH1,
+   //    cuisineP,
+   //    categoryP,
+   //    ingredientsP,
+   //    instructionsP,
+   //    youTubeLink
+   // )
 }
