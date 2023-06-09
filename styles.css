@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+html {
+   font-family: 'Poppins', sans-serif;
+}
 body {
    background-color: antiquewhite;
 }
@@ -27,44 +32,53 @@ body {
 }
 
 .recipe-title {
+   font-family: 'Poppins', sans-serif;
    padding: 2px 16px;
 }
 
 /* Recipe Details Styles */
 .recipe-details-container {
-   max-width: 60%;
+   max-width: 70%;
    margin: 50px auto;
-   
-   background-color: grey;
-   border-radius: 30px;
+   padding: 10px;
+   background-color: antiquewhite;
+   border-radius: 15px;
    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 
-   /* max-width: 940px; */
    display: grid;
-   grid-template-columns: repeat(4, 1fr);
+   grid-template-columns: repeat(3, 1fr);
    grid-auto-rows: minmax(100px, auto);
    grid-gap: 10px;
    grid-template-areas:
-      "title title title title"
-      "image image ingredients ingredients"
-      "image image ingredients ingredients"
-      "instructions instructions instructions instructions"
-      "instructions instructions instructions instructions"
-      "resources resources resources resources";
+      "title image image "
+      "title image image "
+      "ingredients instructions instructions "
+      "resources resources resources";
 }
 
 .recipe-details-container > * {
-   background-color: cornflowerblue;
+   /* background-color: cornflowerblue; */
    border-radius: 30px;
    padding: 30px;
 }
 
 .detail-title {
+   font-family: 'Poppins', sans-serif;
+   font-size: 30px;
    grid-area: title;
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }
 
 .detail-image {
    grid-area: image;
+   border-radius: 15px;
+   background-color: transparent;
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   /* position: relative; */
 }
 
 #detail-image {
@@ -72,13 +86,20 @@ body {
 }
 
 .detail-ingredients {
+   font-family: 'Poppins', sans-serif;
+   font-size: larger;
    grid-area: ingredients;
 }
 
 .detail-instructions {
+   font-family: 'Poppins', sans-serif;
+   font-size: larger;
    grid-area: instructions;
 }
 
 .detail-resources {
    grid-area: resources;
 }
+
+
+

@@ -12,6 +12,8 @@ getCategories()
 cuisineSelect.addEventListener("change", getRecipesByCuisine)
 categorySelect.addEventListener("change", getRecipesByCategory)
 
+// Recipe Array for 
+
 function getRecipesByCuisine(e) {
    const cuisine = e.target.value
    fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${cuisine}`)
@@ -27,6 +29,7 @@ function getRecipesByCategory(e) {
 }
 
 function displayRecipes(recipes) {
+   // hide the recipe card
    recipeContainer.replaceChildren()
 
    selectionH1.textContent = cuisineSelect.value || categorySelect.value
@@ -38,6 +41,7 @@ function displayRecipes(recipes) {
 }
 
 function renderRecipeCard(recipe) {
+   // hide the recipes container
    const { idMeal, strMealThumb, strMeal } = recipe
 
    const recipeId = idMeal
@@ -48,6 +52,7 @@ function renderRecipeCard(recipe) {
    const recipeImg = document.createElement("img")
    recipeImg.src = strMealThumb
    recipeImg.alt = strMeal
+   // maybe make this click event on the entire card
    recipeImg.addEventListener("click", e => getRecipeDetails(e, recipeId))
 
    const recipeTitleDiv = document.createElement("div")
@@ -85,17 +90,21 @@ function renderRecipeDetails(recipe) {
       ingredientP.textContent = ingredient
       return ingredientP
    })
-   let ingredientsArea =  document.querySelector(".detail-ingredients")
+   let ingredientsArea = document.querySelector(".detail-ingredients")
    ingredientsArea.replaceChildren()
    ingredientsArea.append(...ingredientPs)
 
    // Title Area
-   document.querySelector(".detail-title").textContent = strMeal
-   
+   const title = document.createElement("p")
+   title.textContent = strMeal
+   let titleArea = document.querySelector(".detail-title")
+   titleArea.replaceChildren()
+   titleArea.append(title)
+
    // Image Area
-   document.querySelector("#detail-image").src = strMealThumb
+   document.querySelector(".detail-image").style.backgroundImage =
+      "url(" + strMealThumb + ")"
    document.querySelector(".detail-instructions").textContent = strInstructions
-   
 
    // let nameH1 = document.createElement("h1")
    // let cuisineP = document.createElement("p")
