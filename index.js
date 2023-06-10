@@ -3,6 +3,7 @@ const cuisineSelect = document.querySelector("#cuisines")
 const categorySelect = document.querySelector("#categories")
 const recipeContainer = document.querySelector(".recipe-container")
 const selectionH1 = document.querySelector(".selection-heading")
+const recipeDetailsContainer = document.querySelector(".recipe-details-container")
 
 // Function Calls
 getCuisines()
@@ -30,6 +31,7 @@ function getRecipesByCategory(e) {
 
 function displayRecipes(recipes) {
    // hide the recipe card
+   recipeDetailsContainer.style.display = "none"
    recipeContainer.replaceChildren()
 
    selectionH1.textContent = cuisineSelect.value || categorySelect.value
@@ -47,12 +49,12 @@ function renderRecipeCard(recipe) {
 
    const cardDiv = document.createElement("div")
    cardDiv.classList.add("card")
+   cardDiv.addEventListener("click", e => getRecipeDetails(e, recipeId))
 
    const recipeImg = document.createElement("img")
    recipeImg.src = strMealThumb
    recipeImg.alt = strMeal
    // maybe make this click event on the entire card
-   recipeImg.addEventListener("click", e => getRecipeDetails(e, recipeId))
 
    const recipeTitleDiv = document.createElement("div")
    recipeTitleDiv.classList.add("recipe-title")
@@ -75,6 +77,7 @@ function renderRecipeDetails(recipe) {
 
    // instead hide the recipe container and keep the children
    recipeContainer.replaceChildren()
+   recipeDetailsContainer.style.display = "grid"
    const {
       strMeal,
       strArea,
