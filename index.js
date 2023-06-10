@@ -54,7 +54,6 @@ function renderRecipeCard(recipe) {
    const recipeImg = document.createElement("img")
    recipeImg.src = strMealThumb
    recipeImg.alt = strMeal
-   // maybe make this click event on the entire card
 
    const recipeTitleDiv = document.createElement("div")
    recipeTitleDiv.classList.add("recipe-title")
