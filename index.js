@@ -41,7 +41,6 @@ function displayRecipes(recipes) {
 }
 
 function renderRecipeCard(recipe) {
-   // hide the recipes container
    const { idMeal, strMealThumb, strMeal } = recipe
 
    const recipeId = idMeal
@@ -73,6 +72,8 @@ function getRecipeDetails(e, id) {
 }
 
 function renderRecipeDetails(recipe) {
+
+   // instead hide the recipe container and keep the children
    recipeContainer.replaceChildren()
    const {
       strMeal,
