@@ -1,10 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
+html,
+body {
+   height: 100%;
+}
 html {
-   font-family: 'Poppins', sans-serif;
+   font-family: "Poppins", sans-serif;
 }
 body {
-   background-color: antiquewhite;
+   /* background-color: antiquewhite; */
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-image: url("./assets/job593-017.jpg");
+   background-attachment: fixed;
+
 }
 
 .header {
@@ -25,6 +35,7 @@ body {
    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
    transition: 0.3s;
    border-radius: 5px;
+   background-color: antiquewhite;
    /* margin: 20px; */
 }
 
@@ -38,7 +49,7 @@ body {
 }
 
 .recipe-title {
-   font-family: 'Poppins', sans-serif;
+   font-family: "Poppins", sans-serif;
    padding: 2px 16px;
 }
 
@@ -69,7 +80,7 @@ body {
 }
 
 .detail-title {
-   font-family: 'Poppins', sans-serif;
+   font-family: "Poppins", sans-serif;
    font-size: 30px;
    grid-area: title;
    display: flex;
@@ -92,13 +103,13 @@ body {
 }
 
 .detail-ingredients {
-   font-family: 'Poppins', sans-serif;
+   font-family: "Poppins", sans-serif;
    font-size: larger;
    grid-area: ingredients;
 }
 
 .detail-instructions {
-   font-family: 'Poppins', sans-serif;
+   font-family: "Poppins", sans-serif;
    font-size: larger;
    grid-area: instructions;
 }
@@ -106,6 +117,3 @@ body {
 .detail-resources {
    grid-area: resources;
 }
-
-
-
