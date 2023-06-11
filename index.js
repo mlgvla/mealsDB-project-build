@@ -3,7 +3,9 @@ const cuisineSelect = document.querySelector("#cuisines")
 const categorySelect = document.querySelector("#categories")
 const recipeContainer = document.querySelector(".recipe-container")
 const selectionH1 = document.querySelector(".selection-heading")
-const recipeDetailsContainer = document.querySelector(".recipe-details-container")
+const recipeDetailsContainer = document.querySelector(
+   ".recipe-details-container"
+)
 const welcomeSection = document.querySelector(".welcome")
 const featuredRecipeDiv = document.querySelector(".featured")
 
@@ -16,7 +18,7 @@ getCategories()
 cuisineSelect.addEventListener("change", getRecipesByCuisine)
 categorySelect.addEventListener("change", getRecipesByCategory)
 
-// Recipe Array for 
+// Recipe Array for
 
 function getRecipesByCuisine(e) {
    const cuisine = e.target.value
@@ -34,6 +36,7 @@ function getRecipesByCategory(e) {
 
 function displayRecipes(recipes) {
    // hide the recipe card
+   welcomeSection.style.display = "none"
    recipeDetailsContainer.style.display = "none"
    recipeContainer.replaceChildren()
 
@@ -45,7 +48,7 @@ function displayRecipes(recipes) {
    categorySelect.value = ""
 }
 
-function renderRecipeCard(recipe, featured=false) {
+function renderRecipeCard(recipe, featured = false) {
    const { idMeal, strMealThumb, strMeal } = recipe
 
    const recipeId = idMeal
@@ -66,11 +69,10 @@ function renderRecipeCard(recipe, featured=false) {
    recipeTitleDiv.append(recipeTitle)
 
    cardDiv.append(recipeImg, recipeTitleDiv)
+   
    if (featured) {
-      
       featuredRecipeDiv.append(cardDiv)
    } else {
-      
       recipeContainer.append(cardDiv)
    }
 }
@@ -82,7 +84,6 @@ function getRecipeDetails(e, id) {
 }
 
 function renderRecipeDetails(recipe) {
-
    // instead hide the recipe container and keep the children
    welcomeSection.style.display = "none"
    recipeContainer.replaceChildren()
