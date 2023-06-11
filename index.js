@@ -19,7 +19,6 @@ cuisineSelect.addEventListener("change", getRecipesByCuisine)
 categorySelect.addEventListener("change", getRecipesByCategory)
 
 // Recipe Array for
-
 function getRecipesByCuisine(e) {
    const cuisine = e.target.value
    fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${cuisine}`)
@@ -35,7 +34,6 @@ function getRecipesByCategory(e) {
 }
 
 function displayRecipes(recipes) {
-   // hide the recipe card
    welcomeSection.style.display = "none"
    recipeDetailsContainer.style.display = "none"
    recipeContainer.replaceChildren()
@@ -69,7 +67,7 @@ function renderRecipeCard(recipe, featured = false) {
    recipeTitleDiv.append(recipeTitle)
 
    cardDiv.append(recipeImg, recipeTitleDiv)
-   
+
    if (featured) {
       featuredRecipeDiv.append(cardDiv)
    } else {
@@ -84,7 +82,6 @@ function getRecipeDetails(e, id) {
 }
 
 function renderRecipeDetails(recipe) {
-   // instead hide the recipe container and keep the children
    welcomeSection.style.display = "none"
    recipeContainer.replaceChildren()
    recipeDetailsContainer.style.display = "grid"
@@ -104,9 +101,12 @@ function renderRecipeDetails(recipe) {
       ingredientP.textContent = ingredient
       return ingredientP
    })
+   let ingredientsTitle = document.createElement("h3")
+   ingredientsTitle.textContent = "Ingredients"
+   ingredientsTitle.style.textDecoration = "underline"
    let ingredientsArea = document.querySelector(".detail-ingredients")
    ingredientsArea.replaceChildren()
-   ingredientsArea.append(...ingredientPs)
+   ingredientsArea.append(ingredientsTitle, ...ingredientPs)
 
    // Title Area
    const title = document.createElement("p")
@@ -118,7 +118,24 @@ function renderRecipeDetails(recipe) {
    // Image Area
    document.querySelector(".detail-image").style.backgroundImage =
       "url(" + strMealThumb + ")"
-   document.querySelector(".detail-instructions").textContent = strInstructions
+
+   // Directions Area
+   const directionsTitle = document.createElement("h3")
+   directionsTitle.textContent = "Directions"
+   directionsTitle.style.textDecoration = "underline"
+   const directionsP = document.createElement("p")
+   directionsP.textContent = strInstructions
+   document
+      .querySelector(".detail-instructions")
+      .append(directionsTitle, directionsP)
+
+   // Resources Area
+   const youTubeLink = document.createElement("a")
+   youTubeLink.href = strYoutube
+   youTubeLink.textContent = `How to Make ${strMeal} on YouTube.`
+   const cuisineCategory = document.createElement("p")
+   cuisineCategory.textContent = `(Cuisine: ${strArea}, Category: ${strCategory})`
+   document.querySelector(".detail-resources").append(youTubeLink, cuisineCategory)
 
    // let nameH1 = document.createElement("h1")
    // let cuisineP = document.createElement("p")
