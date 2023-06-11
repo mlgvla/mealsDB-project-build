@@ -2,6 +2,17 @@
 
 
 // Fetch Functions
+function showWelcome() {
+   recipeDetailsContainer.style.display = "none"
+   getfeaturedRecipe()
+}
+
+function getfeaturedRecipe() {
+  fetch("https://www.themealdb.com/api/json/v1/1/random.php")
+  .then(r => r.json())
+  .then(recipe => renderRecipeCard(recipe.meals[0], true))
+}
+
 function getCuisines() {
    fetch("https://www.themealdb.com/api/json/v1/1/list.php?a=list")
       .then(r => r.json())

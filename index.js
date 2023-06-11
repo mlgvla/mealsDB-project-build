@@ -4,8 +4,11 @@ const categorySelect = document.querySelector("#categories")
 const recipeContainer = document.querySelector(".recipe-container")
 const selectionH1 = document.querySelector(".selection-heading")
 const recipeDetailsContainer = document.querySelector(".recipe-details-container")
+const welcomeSection = document.querySelector(".welcome")
+const featuredRecipeDiv = document.querySelector(".featured")
 
 // Function Calls
+showWelcome()
 getCuisines()
 getCategories()
 
@@ -42,7 +45,7 @@ function displayRecipes(recipes) {
    categorySelect.value = ""
 }
 
-function renderRecipeCard(recipe) {
+function renderRecipeCard(recipe, featured=false) {
    const { idMeal, strMealThumb, strMeal } = recipe
 
    const recipeId = idMeal
@@ -63,7 +66,13 @@ function renderRecipeCard(recipe) {
    recipeTitleDiv.append(recipeTitle)
 
    cardDiv.append(recipeImg, recipeTitleDiv)
-   recipeContainer.append(cardDiv)
+   if (featured) {
+      
+      featuredRecipeDiv.append(cardDiv)
+   } else {
+      
+      recipeContainer.append(cardDiv)
+   }
 }
 
 function getRecipeDetails(e, id) {
@@ -75,6 +84,7 @@ function getRecipeDetails(e, id) {
 function renderRecipeDetails(recipe) {
 
    // instead hide the recipe container and keep the children
+   welcomeSection.style.display = "none"
    recipeContainer.replaceChildren()
    recipeDetailsContainer.style.display = "grid"
    const {
